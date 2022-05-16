@@ -13,11 +13,13 @@ Window::Window(GLint windowWidth, GLint windowHeight)
 {
 	width = windowWidth;
 	height = windowHeight;
-	//muevex = 2.0f;
-	moverXpos = 0.0f;
-	moverXneg = 0.0f;
-	moverZpos = 0.0f;
-	moverZneg = 0.0f;
+	muevex = 2.0f;
+	muevex0 = 0.0f;
+	muevex1 = 0.0f;
+	muevey = 0.0f;
+	muevez = 0.0f;
+	activaCamara = 0;
+	contador = 0;
 	for (size_t i = 0; i < 1024; i++)
 	{
 		keys[i] = 0;
@@ -108,33 +110,56 @@ void Window::ManejaTeclado(GLFWwindow* window, int key, int code, int action, in
 	{
 		glfwSetWindowShouldClose(window, GL_TRUE);
 	}
-	/*if (key == GLFW_KEY_Y)
+	if (key == GLFW_KEY_Z)
 	{
 		theWindow-> muevex += 1.0;
 	}
-	if (key == GLFW_KEY_U)
-	{
-		theWindow-> muevex -= 1.0;
-	}*/
-
-	//Para mover Lego
 	if (key == GLFW_KEY_X)
 	{
-		theWindow->moverXpos += 0.5;
-	}
-	if (key == GLFW_KEY_Z)
-	{
-		theWindow->moverXneg -= 0.5;
-	}
-	if (key == GLFW_KEY_C)
-	{
-		theWindow->moverZpos += 0.5;
-	}
-	if (key == GLFW_KEY_V)
-	{
-		theWindow->moverZneg -= 0.5;
+		theWindow-> muevex -= 1.0;
 	}
 
+	if (key == GLFW_KEY_U)//Mover en eje x+
+	{
+		theWindow->muevex0 += 1.0;
+	}
+	if (key == GLFW_KEY_Y)//Mover en eje x-
+	{
+		theWindow->muevex0 -= 1.0;
+	}
+	if (key == GLFW_KEY_C)//Mover en eje y+
+	{
+		theWindow->muevey += 1.0;
+	}
+	if (key == GLFW_KEY_V)//Mover en eje y-
+	{
+		theWindow->muevey -= 1.0;
+	}
+
+	if (key == GLFW_KEY_I)//Mover en eje y+
+	{
+		theWindow->muevez += 1.0;
+	}
+	if (key == GLFW_KEY_O)//Mover en eje y-
+	{
+		theWindow->muevez -= 1.0;
+	}
+
+	if (key == GLFW_KEY_L)//Mover en eje y-
+	{
+		theWindow->contador = 0.0;
+	}
+
+	if (key == GLFW_KEY_N)//Activa camaraIsometrica
+	{
+		theWindow->activaCamara = 1;
+		printf("\nSe activo camara Isometrica.\n");
+	}
+	if (key == GLFW_KEY_M)//Activa camaraNormal
+	{
+		theWindow->activaCamara = 0;
+		printf("\nSe activo camara normal.\n");
+	}
 
 
 	if (key >= 0 && key < 1024)

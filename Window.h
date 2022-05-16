@@ -13,14 +13,13 @@ public:
 	GLfloat getBufferHeight() { return bufferHeight; }
 	GLfloat getXChange();
 	GLfloat getYChange();
-	//GLfloat getmuevex() { return muevex; }
-	//GLfloat getmoverX() { return moverX1; }
-	GLfloat getmoverXpos() { return moverXpos; }
-	GLfloat getmoverXneg() { return moverXneg; }
-	GLfloat getmoverZpos() { return moverZpos; }
-	GLfloat getmoverZneg() { return moverZneg; }
-	//GLfloat getmoverY() { return moverY1; }
-	//GLfloat getmoverY() { return moverY; }
+	GLfloat getmuevex() { return muevex; }
+	GLfloat getmuevex1() { return muevex1; }
+	GLfloat getmuevex0() { return muevex0; }
+	GLfloat getmuevey() { return muevey; }
+	GLfloat getmuevez() { return muevez; }
+	GLint getcontador() { return contador; }
+	GLint getactivaCamara() { return activaCamara; }
 	bool getShouldClose() {
 		return  glfwWindowShouldClose(mainWindow);}
 	bool* getsKeys() { return keys; }
@@ -37,10 +36,12 @@ private:
 	GLfloat lastY;
 	GLfloat xChange;
 	GLfloat yChange;
-	GLfloat moverXpos;
-	GLfloat moverXneg;
-	GLfloat moverZpos;
-	GLfloat moverZneg;
+	GLfloat muevex;
+	GLfloat muevex1;
+	GLfloat muevex0;
+	GLfloat muevey;
+	GLfloat muevez;
+	GLint contador,activaCamara;
 	bool mouseFirstMoved;
 	static void ManejaTeclado(GLFWwindow* window, int key, int code, int action, int mode);
 	static void ManejaMouse(GLFWwindow* window, double xPos, double yPos);
